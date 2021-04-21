@@ -1,3 +1,3 @@
 # China-ISP
 China ISP ACL for Bind    
-*Updated in 2020-11-3
+*Updated in 2021-04-21
