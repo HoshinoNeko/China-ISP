@@ -7,16 +7,16 @@ on:
     - cron:  '* */1 * * *'
 
 jobs:
-  build-and-deploy:
+  update_rules:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
         repository: HoshinoNeko/China-ISP
-        ref: master
+        ref: main
 
-    - name: Build and Deploy
+    - name: Update Rules
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DEPLOY_REPO: HoshinoNeko/China-ISP
