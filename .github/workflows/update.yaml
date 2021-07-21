@@ -26,8 +26,6 @@ jobs:
         DEPLOY_BRANCH: main
         COMMIT_USER: "GITHUB ACTIONS[Bot]"
         COMMIT_EMAIL: 21078047+HoshinoNeko@users.noreply.github.com
-      with: 
-        script: './process.sh'
       run: |
         #bash process.sh
         git add .
@@ -37,3 +35,5 @@ jobs:
         #git push -u origin ${DEPLOY_BRANCH}
         git push
         return 0
+      with:
+        script: './process.sh'
