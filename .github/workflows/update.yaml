@@ -31,7 +31,7 @@ jobs:
         git add .
         git config user.name ${COMMIT_USER}
         git config user.email ${COMMIT_EMAIL}
-        git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`" || true
+        git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`" && git push
         #git push -u origin ${DEPLOY_BRANCH}
-        git push || true
+        #git push
         return 0
