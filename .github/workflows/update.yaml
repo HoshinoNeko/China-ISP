@@ -26,8 +26,10 @@ jobs:
         DEPLOY_BRANCH: main
         COMMIT_USER: "GITHUB ACTIONS[Bot]"
         COMMIT_EMAIL: 21078047+HoshinoNeko@users.noreply.github.com
+      with: 
+        script: './process.sh'
       run: |
-        bash process.sh
+        #bash process.sh
         git add .
         git config user.name ${COMMIT_USER}
         git config user.email ${COMMIT_EMAIL}
