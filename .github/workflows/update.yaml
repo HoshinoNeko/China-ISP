@@ -20,6 +20,7 @@ jobs:
         ref: main
 
     - name: Update Rules
+      shell: bash
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DEPLOY_REPO: HoshinoNeko/China-ISP
@@ -34,6 +35,7 @@ jobs:
         git config user.name ${COMMIT_USER}
         git config user.email ${COMMIT_EMAIL}
         git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`"
-        git branch -M ${DEPLOY_BRANCH}
+        #git branch -M ${DEPLOY_BRANCH}
         #git remote add origin https://HoshinoNeko:${GITHUB_TOKEN}@github.com/${DEPLOY_REPO}
-        git push -u origin ${DEPLOY_BRANCH}
+        #git push -u origin ${DEPLOY_BRANCH}
+        git push
