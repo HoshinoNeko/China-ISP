@@ -1,0 +1,36 @@
+name: ACL Update
+on: 
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '* */1 * * *'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        repository: HoshinoNeko/China-ISP
+        ref: master
+
+    - name: Build and Deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEPLOY_REPO: HoshinoNeko/China-ISP
+        DEPLOY_BRANCH: main
+        COMMIT_USER: "GITHUB ACTIONS[Bot]"
+        COMMIT_EMAIL: 21078047+HoshinoNeko@users.noreply.github.com
+      run: |
+        git clone -b ${DEPLOY_BRANCH} https://HoshinoNeko:${GITHUB_TOKEN}@github.com/${DEPLOY_REPO} China-ISP
+        cd China-ISP
+        bash process.sh
+        git add .
+        git config user.name ${COMMIT_USER}
+        git config user.email ${COMMIT_EMAIL}
+        git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`"
+        git branch -M ${DEPLOY_BRANCH}
+        #git remote add origin https://HoshinoNeko:${GITHUB_TOKEN}@github.com/${DEPLOY_REPO}
+        git push -u origin ${DEPLOY_BRANCH}

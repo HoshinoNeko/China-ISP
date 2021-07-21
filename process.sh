@@ -3,15 +3,15 @@ processData() {
     raw_data=$(curl -s https://bgp.space/${i}.html | sed "s/<[^>]*>//g")
     total_num=$(echo "${raw_data}" | grep -n "数据共计条数" | awk -F: '{print $3}')
     begin_num=$(echo "${raw_data}" | grep -n "BEGIN" | awk -F: '{print $1}')
-    begin_num=$(($begin_num + 1))
-    end_num=$(($begin_num + $total_num - 1))
+    begin_num=$(( begin_num + 1))
+    end_num=$(( begin_num +  total_num - 1))
     tmp_data=$(echo "${raw_data}" | sed -n "$begin_num"",""$end_num""p")
     data=$(echo "${tmp_data}" | sed ':a;N;$!ba;s/\n/;\n/g')
     data="acl ""$name"" {"$'\n'""$data";"
     echo "${data}" > China-ISP/$name
-    echo [INFO] Write $i to $name Completed.
+    echo [INFO] Write $i to $name Complete.
 }
-
+loopProcess() {
 for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 tietong cernet cernet6 cstnet cstnet6; do
     case $i in
       china)
@@ -60,3 +60,17 @@ for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 tietong cerne
           ;;
     esac
 done
+}
+last_date=$(cat time)
+raw_data=$(curl -sL https://bgp.space | sed "s/<[^>]*>//g")
+time_num=$(($(echo "$raw_data" | grep -n "所有IP地址段" | awk -F: '{print $1}') + 1))
+curr_date=$(date -d "$(echo "$raw_data" | sed -n "$time_num""p")" +%s)
+if [ "$curr_date" -gt "$last_date" ]
+then
+    echo "[INFO] New data found!"
+    loopProcess
+    echo "$curr_date" > time
+else
+    echo "[INFO] No needs to update. Program will exit automatically"
+    return 0
+fi
