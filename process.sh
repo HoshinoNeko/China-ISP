@@ -7,7 +7,7 @@ processData() {
     end_num=$(( begin_num +  total_num - 1))
     tmp_data=$(echo "${raw_data}" | sed -n "$begin_num"",""$end_num""p")
     data=$(echo "${tmp_data}" | sed ':a;N;$!ba;s/\n/;\n/g')
-    data="acl ""$name"" {"$'\n'""$data";"
+    data="acl ""$name"" {"$'\n'""$data";"$'\n'"};"
     echo "${data}" > China-ISP/$name
     echo [INFO] Write $i to $name Complete.
 }
