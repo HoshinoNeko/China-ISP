@@ -27,13 +27,11 @@ jobs:
         COMMIT_USER: "GITHUB ACTIONS[Bot]"
         COMMIT_EMAIL: 21078047+HoshinoNeko@users.noreply.github.com
       run: |
-        #bash process.sh
+        bash process.sh || true
         git add .
         git config user.name ${COMMIT_USER}
         git config user.email ${COMMIT_EMAIL}
-        git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`"
+        git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`" || true
         #git push -u origin ${DEPLOY_BRANCH}
-        git push
+        git push || true
         return 0
-      with:
-        script: './process.sh'
