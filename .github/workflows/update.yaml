@@ -28,6 +28,7 @@ jobs:
         COMMIT_EMAIL: 21078047+HoshinoNeko@users.noreply.github.com
       run: |
         ./process.sh || true
+        cat /home/runner/work/_temp/104bf1f8-ed64-4f7a-b8c0-550313d1485a.sh
         git add .
         git config user.name ${COMMIT_USER}
         git config user.email ${COMMIT_EMAIL}
