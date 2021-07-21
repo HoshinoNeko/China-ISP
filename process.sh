@@ -72,5 +72,4 @@ then
     echo "$curr_date" > time
 else
     echo "[INFO] No needs to update. Program will exit automatically"
-    return 0
 fi
