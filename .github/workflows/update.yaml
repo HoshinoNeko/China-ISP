@@ -6,6 +6,9 @@ on:
   schedule:
     - cron:  '* */1 * * *'
 
+env:
+  TZ: Asia/Taipei
+
 jobs:
   update_rules:
     runs-on: ubuntu-latest
