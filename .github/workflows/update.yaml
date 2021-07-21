@@ -39,3 +39,4 @@ jobs:
         #git remote add origin https://HoshinoNeko:${GITHUB_TOKEN}@github.com/${DEPLOY_REPO}
         #git push -u origin ${DEPLOY_BRANCH}
         git push
+        return 0
