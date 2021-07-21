@@ -25,7 +25,7 @@ jobs:
         COMMIT_EMAIL: 21078047+HoshinoNeko@users.noreply.github.com
       run: |
         #git clone -b ${DEPLOY_BRANCH} https://HoshinoNeko:${GITHUB_TOKEN}@github.com/${DEPLOY_REPO} China-ISP
-        cd China-ISP
+        #cd China-ISP
         bash process.sh
         git add .
         git config user.name ${COMMIT_USER}
