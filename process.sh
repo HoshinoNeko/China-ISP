@@ -61,6 +61,7 @@ for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 tietong cerne
     esac
 done
 }
+start() {
 last_date=$(cat time)
 raw_data=$(curl -sL https://bgp.space | sed "s/<[^>]*>//g")
 time_num=$(($(echo "$raw_data" | grep -n "所有IP地址段" | awk -F: '{print $1}') + 1))
@@ -70,6 +71,10 @@ then
     echo "[INFO] New data found!"
     loopProcess
     echo "$curr_date" > time
+    return 0
 else
     echo "[INFO] No needs to update. Program will exit automatically"
+    return 0
 fi
+}
+start
