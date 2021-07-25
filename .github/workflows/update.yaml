@@ -27,7 +27,9 @@ jobs:
         COMMIT_USER: "GITHUB ACTIONS[Bot]"
         COMMIT_EMAIL: 21078047+HoshinoNeko@users.noreply.github.com
       run: |
-        ./process.sh
+        echo "[INFO] Start to process data"
+        source ./process.sh
+        echo "[INFO] Process End"
         git add .
         git config user.name ${COMMIT_USER}
         git config user.email ${COMMIT_EMAIL}
