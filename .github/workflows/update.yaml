@@ -30,10 +30,8 @@ jobs:
         echo "[INFO] Start to process data"
         source ./process.sh
         echo "[INFO] Process End"
-        git add .
-        git config user.name ${COMMIT_USER}
-        git config user.email ${COMMIT_EMAIL}
-        git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`"
+        #git add .
+        #git config user.name ${COMMIT_USER}
+        #git config user.email ${COMMIT_EMAIL}
+        #git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`"
         #git push -u origin ${DEPLOY_BRANCH}
-        git push
-        return 0

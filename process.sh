@@ -71,7 +71,17 @@ then
     echo "[INFO] New data found!"
     loopProcess
     echo "$curr_date" > time
-else
+    if [ $GITHUB_TOKEN ]
+    then
+        git add .
+        git config user.name ${COMMIT_USER}
+        git config user.email ${COMMIT_EMAIL}
+        git commit -m "Updated by Actions at `date +'%Y-%m-%d %H:%M:%S'`"
+        git push -u origin ${DEPLOY_BRANCH}
+    else
+        echo "[INFO] Process End"
+        return 0
+    fi
     echo "[INFO] No needs to update. Program will exit automatically"
     return 0
 fi
