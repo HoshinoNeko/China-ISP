@@ -62,14 +62,13 @@ for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 tietong cerne
 done
 }
 start() {
-echo "[INFO] Process Start"
 last_date=$(cat time)
 raw_data=$(curl -sL https://bgp.space | sed "s/<[^>]*>//g")
 time_num=$(($(echo "$raw_data" | grep -n "所有IP地址段" | awk -F: '{print $1}') + 1))
 curr_date=$(date -d "$(echo "$raw_data" | sed -n "$time_num""p")" +%s)
 if [ "$curr_date" -gt "$last_date" ]
 then
-    echo "[INFO] New data found!"
+    echo "[INFO] New data found! Process Start"
     loopProcess
     echo "$curr_date" > time
     if [ $GITHUB_TOKEN ]
@@ -83,6 +82,7 @@ then
         echo "[INFO] Process End"
         return 0
     fi
+else
     echo "[INFO] No needs to update. Program will exit automatically"
     return 0
 fi
