@@ -62,6 +62,7 @@ for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 tietong cerne
 done
 }
 start() {
+echo "[INFO] Process Start"
 last_date=$(cat time)
 raw_data=$(curl -sL https://bgp.space | sed "s/<[^>]*>//g")
 time_num=$(($(echo "$raw_data" | grep -n "所有IP地址段" | awk -F: '{print $1}') + 1))
