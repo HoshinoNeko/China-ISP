@@ -1,4 +1,3 @@
 acl cstnet_ipv4_acl {
-2400:dd00::/28;
-2401:de00::/32;
+######### &nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;#########;
 };
