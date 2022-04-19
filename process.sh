@@ -63,7 +63,7 @@ done
 }
 start() {
 last_date=$(cat time)
-raw_data=$(curl -sL https://bgp.space | sed "s/<[^>]*>//g")
+raw_data=$(curl -sL https://asn.bgp.space | sed "s/<[^>]*>//g")
 time_num=$(($(echo "$raw_data" | grep -n "所有IP地址段" | awk -F: '{print $1}') + 1))
 curr_date=$(date -d "$(echo "$raw_data" | sed -n "$time_num""p")" +%s)
 if [ "$curr_date" -gt "$last_date" ]
