@@ -1,6 +1,6 @@
 #!/bin/bash
 processData() {
-    raw_data=$(curl -s https://bgp.space/${i}.html | sed "s/<[^>]*>//g")
+    raw_data=$(curl -s https://asn.bgp.space/${i}.html | sed "s/<[^>]*>//g")
     total_num=$(echo "${raw_data}" | grep -n "数据共计条数" | awk -F: '{print $3}')
     begin_num=$(echo "${raw_data}" | grep -n "BEGIN" | awk -F: '{print $1}')
     begin_num=$(( begin_num + 1))
