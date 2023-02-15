@@ -51,7 +51,15 @@ for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 cernet cernet
           processData
           ;;
       cstnet6)
-          name=cstnet_ipv4_acl
+          name=cstnet_ipv6_acl
+          processData
+          ;;
+      cmcc)
+          name=cmcc_ipv4_acl
+          processData
+          ;;
+      cmcc6)
+          name=cmcc_ipv6_acl
           processData
           ;;
     esac
