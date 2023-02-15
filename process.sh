@@ -12,7 +12,7 @@ processData() {
     echo [INFO] Write $i to $name Complete.
 }
 loopProcess() {
-for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 tietong cernet cernet6 cstnet cstnet6; do
+for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 cernet cernet6 cstnet cstnet6; do
     case $i in
       china)
           name=china_ipv4_acl
@@ -36,10 +36,6 @@ for i in china china6 chinanet chinanet6 unicom unicom6 cmcc cmcc6 tietong cerne
           ;;
       unicom6)
           name=cucc_ipv6_acl
-          processData
-          ;;
-      tietong)
-          name=crc_ipv4_acl
           processData
           ;;
       cernet)
