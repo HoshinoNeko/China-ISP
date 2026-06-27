@@ -35,7 +35,7 @@ loopProcess() {
         [cstnet]=cstnet_ipv4_acl
         [cstnet6]=cstnet_ipv6_acl
         [drpeng]=drpeng_ipv4_acl
-        [drpeng6]=drpeng_ipv6_acl
+        #[drpeng6]=drpeng_ipv6_acl
     )
 
     for i in "${!ISP_MAP[@]}"; do
