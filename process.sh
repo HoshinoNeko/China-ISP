@@ -96,8 +96,7 @@ start() {
         exit 1
     fi
 
-    curr_date_str=$(echo "$page_raw" \
-        | grep -oP '(?<=Updated: <span>)[^<]+')
+    curr_date_str=$(grep -oP 'Update at:\s*<span>\K[^<]+' <<< "$page_raw")
     if [ -z "$curr_date_str" ]; then
         echo "[ERROR] Could not parse update time from homepage."
         exit 1
