@@ -5,6 +5,7 @@ on:
       - main
   schedule:
     - cron:  '0 17 * * *'
+  workflow_dispatch:
 
 env:
   TZ: Asia/Taipei
